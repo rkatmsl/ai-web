@@ -1,0 +1,7 @@
+streamlit
+agno
+psycopg
+google-genai
+beautifulsoup4
+sqlalchemy
+pgvector
