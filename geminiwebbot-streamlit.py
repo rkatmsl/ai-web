@@ -7,7 +7,7 @@ from agno.vectordb.pgvector import PgVector
 from textwrap import dedent
 
 # Database URL and other configurations
-db_url = "postgresql+psycopg2://ai:ai@localhost:5432/ai"
+db_url = "postgresql+psycopg://ai:ai@localhost:5432/ai"
 
 # Initialize KnowledgeBase and Agent
 knowledge_base = WebsiteKnowledgeBase(
