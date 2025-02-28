@@ -18,7 +18,7 @@ knowledge_base = WebsiteKnowledgeBase(
     vector_db=PgVector(
         table_name="adani_kb",
         db_url=db_url,
-        embedder=GeminiEmbedder(api_key='AIzaSyBZPISHXJRqTuha1TXtoSV2fgZtshvtxFA'),
+        embedder=GeminiEmbedder(),
     ),
 )
 # knowledge_base.load(recreate=True)  # Comment out after first run
