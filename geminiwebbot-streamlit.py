@@ -6,9 +6,7 @@ from agno.models.google import Gemini
 from agno.vectordb.pgvector import PgVector
 from textwrap import dedent
 import time
-import os
 
-api_key = os.getenv("GOOGLE_API_KEY")
 
 # Database URL and other configurations
 db_url = "postgresql+psycopg2://postgres:c2FNJ5zNMGNZb2svEFc4@database-1.czg44aga0cfb.ap-south-1.rds.amazonaws.com:5432/ai"
@@ -28,7 +26,7 @@ knowledge_base = WebsiteKnowledgeBase(
 
 # Agent description and instructions
 agent = Agent(
-    model=Gemini(id="gemini-2.0-flash", api_key=api_key),
+    model=Gemini(id="gemini-2.0-flash"),
     description="""\
     You are representing Adani Foundation, an AI Agent.
     Your goal is to provide information from the vector DB.
