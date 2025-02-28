@@ -1,7 +1,6 @@
 streamlit
 agno
-psycopg
-psycopg2
+psycopg2-binary
 google-genai
 beautifulsoup4
 sqlalchemy
