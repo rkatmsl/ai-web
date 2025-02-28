@@ -6,6 +6,12 @@ from agno.models.google import Gemini
 from agno.vectordb.pgvector import PgVector
 from textwrap import dedent
 import time
+import os
+
+api_key = os.getenv("GOOGLE_API_KEY")
+
+embedder = GeminiEmbedder(api_key=api_key)
+
 
 # Database URL and other configurations
 db_url = "postgresql+psycopg2://postgres:c2FNJ5zNMGNZb2svEFc4@database-1.czg44aga0cfb.ap-south-1.rds.amazonaws.com:5432/ai"
