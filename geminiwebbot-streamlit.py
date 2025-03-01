@@ -6,6 +6,7 @@ from agno.models.google import Gemini
 from agno.vectordb.pgvector import PgVector
 from textwrap import dedent
 import time
+import os
 
 from dotenv import load_dotenv
 
