@@ -9,7 +9,8 @@ import time
 import os
 
 pg_pass = st.secrets["PG_PASS"]
-db_url = f"postgresql+psycopg2://postgres:{pg_pass}@database-1.czg44aga0cfb.ap-south-1.rds.amazonaws.com:5432/ai"
+# db_url = f"postgresql+psycopg2://postgres:{pg_pass}@database-1.czg44aga0cfb.ap-south-1.rds.amazonaws.com:5432/ai"
+db_url = f"postgresql://neondb_owner:{pg_pass}@ep-dry-boat-a56osczd-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require"
 
 # db_url = "postgresql+psycopg://ai:ai@localhost:5432/ai"
 # knowledge_base.load(recreate=True)  # Comment out after first run
@@ -25,8 +26,8 @@ if 'messages' not in st.session_state:
 if 'knowledge_base_initialized' not in st.session_state:
     # Initialize KnowledgeBase
     knowledge_base = WebsiteKnowledgeBase(
-        urls=["https://www.adanifoundation.org", "https://www.adanifoundation.org/about-us", "https://www.adanifoundation.org/Our-Work", "https://www.adanifoundation.org/Our-Work/Education", "https://www.adanifoundation.org/Our-Work/Community-Infrastructure", "https://www.adanifoundation.org/Our-Work/Climate-Action", "https://www.adanifoundation.org/Our-Work/Health", "https://www.adanifoundation.org/Our-Work/Sustainable-Livelihood", "https://www.adanifoundation.org/Newsroom", "https://www.adanifoundation.org/Contact-Us"],
-        max_links=7,
+        urls=["https://www.adanifoundation.org"],
+        max_links=700,
         vector_db=PgVector(
             table_name="adani_kb",
             db_url=db_url,
