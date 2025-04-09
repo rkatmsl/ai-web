@@ -9,7 +9,7 @@ import time
 import os
 
 pg_pass = st.secrets["PG_PASS"]
-db_url = f"postgresql://neondb_owner:{pg_pass}@ep-dry-boat-a56osczd-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require"
+db_url = f"postgresql+psycopg2://neondb_owner:{pg_pass}@ep-dry-boat-a56osczd-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require"
 
 # Streamlit UI setup - Place this at the beginning
 st.set_page_config(page_title="Adani Foundation Virtual Assistant", page_icon="🤖", layout="wide")
