@@ -7,7 +7,6 @@ from agno.vectordb.pgvector import PgVector
 from textwrap import dedent
 import time
 import os
-import google.generativeai as genai
 
 pg_pass = st.secrets["PG_PASS"]
 
