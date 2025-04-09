@@ -57,7 +57,7 @@ def get_agent_with_context():
     context = build_conversation_context(history)
 
     return Agent(
-        model=Gemini(id="gemini-2.0-flash", api_key=API_KEY),
+        model=Gemini(id="gemini-2.0-flash"),
         description="""
         You are representing Adani Foundation, an AI Agent.
         Your goal is to provide information from the vector DB related to Adani Foundation.
