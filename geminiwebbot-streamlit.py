@@ -7,7 +7,6 @@ from agno.vectordb.pgvector import PgVector
 from textwrap import dedent
 import time
 import os
-import google.generativeai as genai
 
 pg_pass = st.secrets["PG_PASS"]
 db_url = f"postgresql://neondb_owner:{pg_pass}@ep-dry-boat-a56osczd-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require"
