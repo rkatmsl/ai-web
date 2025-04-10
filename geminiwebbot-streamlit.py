@@ -8,8 +8,9 @@ from textwrap import dedent
 import time
 import os
 
+
 pg_pass = st.secrets["PG_PASS"]
-db_url = f"postgresql+psycopg2://postgres:{pg_pass}@database-1.cluster-czg44aga0cfb.ap-south-1.rds.amazonaws.com:5432/ai"
+db_url = f"postgresql+psycopg2://postgres:{pg_pass}@database-1.czg44aga0cfb.ap-south-1.rds.amazonaws.com:5432/ai"
 
 # db_url = "postgresql+psycopg://ai:ai@localhost:5432/ai"
 # knowledge_base.load(recreate=True)  # Comment out after first run
