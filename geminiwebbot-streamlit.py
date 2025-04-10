@@ -9,7 +9,7 @@ import time
 import os
 
 pg_pass = st.secrets["PG_PASS"]
-db_url = f"postgresql+psycopg2://postgres:{pg_pass}@database-1.czg44aga0cfb.ap-south-1.rds.amazonaws.com:5432/ai"
+db_url = f"postgresql+psycopg2://postgres:{pg_pass}@database-2.czg44aga0cfb.ap-south-1.rds.amazonaws.com:5432/ai"
 
 # db_url = "postgresql+psycopg://ai:ai@localhost:5432/ai"
 # knowledge_base.load(recreate=True)  # Comment out after first run
@@ -33,6 +33,7 @@ if 'knowledge_base_initialized' not in st.session_state:
             embedder=GeminiEmbedder(),
         ),
     )
+    knowledge_base.load(recreate=True)
     # Store in session state so it persists across reruns
     st.session_state['knowledge_base'] = knowledge_base
     st.session_state['knowledge_base_initialized'] = True
