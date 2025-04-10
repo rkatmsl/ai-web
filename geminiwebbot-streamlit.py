@@ -26,15 +26,15 @@ if 'messages' not in st.session_state:
 if 'knowledge_base_initialized' not in st.session_state:
     # Initialize KnowledgeBase
     knowledge_base = WebsiteKnowledgeBase(
-        urls=["https://www.adanifoundation.org", "https://www.adanifoundation.org/about-us", "https://www.adanifoundation.org/Our-Work", "https://www.adanifoundation.org/Our-Work/Education", "https://www.adanifoundation.org/Our-Work/Community-Infrastructure", "https://www.adanifoundation.org/Our-Work/Climate-Action", "https://www.adanifoundation.org/Our-Work/Health", "https://www.adanifoundation.org/Our-Work/Sustainable-Livelihood", "https://www.adanifoundation.org/Newsroom", "https://www.adanifoundation.org/Contact-Us"],
-        max_links=7,
+        urls=["https://www.adanifoundation.org"],
+        max_links=700,
         vector_db=PgVector(
             table_name="adani_kb",
             db_url=db_url,
             embedder=GeminiEmbedder(),
         ),
     )
-    knowledge_base.load(recreate=True)
+    # knowledge_base.load(recreate=True)
     # Store in session state so it persists across reruns
     st.session_state['knowledge_base'] = knowledge_base
     st.session_state['knowledge_base_initialized'] = True
