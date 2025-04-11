@@ -34,21 +34,25 @@ if 'knowledge_base_initialized' not in st.session_state:
             embedder=GeminiEmbedder(),
         ),
     )
-    # knowledge_base.load(recreate=True)
+    knowledge_base.load(recreate=True)  # Uncomment this line to recreate the knowledge base
     # Store in session state so it persists across reruns
     st.session_state['knowledge_base'] = knowledge_base
     st.session_state['knowledge_base_initialized'] = True
+else:
+    # Retrieve the knowledge base from session state if already initialized
+    knowledge_base = st.session_state['knowledge_base']
+
 
 # Function to build conversation context
 def build_conversation_context(messages):
     if not messages:
         return ""
-    
+
     context = "Previous conversation:\n"
     for msg in messages:
         prefix = "User: " if msg["role"] == "user" else "Assistant: "
         context += f"{prefix}{msg['content']}\n\n"
-    
+
     return context
 
 # Create agent with conversation context
@@ -58,9 +62,9 @@ def get_agent_with_context():
         history = st.session_state['messages'][:-1]
     else:
         history = st.session_state['messages']
-        
+
     context = build_conversation_context(history)
-    
+
     return Agent(
         model=Gemini(id="gemini-2.0-flash"),
         description="""
@@ -76,10 +80,10 @@ def get_agent_with_context():
         6. If the information needed is not available in the provided context, respond with "I don't have enough information to answer this question accurately."
         7. Maintain a conversational tone and refer to previous parts of the conversation when relevant.
         8. Remember details that the user has shared previously.
-        
+
         {context}
         """),
-        knowledge=st.session_state['knowledge_base'],
+        knowledge=knowledge_base, # Use knowledge_base from session state or initialized
     )
 
 # Display chat messages
@@ -95,24 +99,24 @@ def handle_input():
     if question:
         # Add user message to chat history
         st.session_state['messages'].append({"role": "user", "content": question})
-        
+
         # Get response from agent with conversation context
         with st.spinner('Thinking...'):
             # Get a fresh agent instance with updated conversation history
             contextual_agent = get_agent_with_context()
-            
+
             response_object = contextual_agent.run(question, markdown=True)
             response_text = response_object.content
-        
+
         # Add agent response to chat history
         st.session_state['messages'].append({"role": "assistant", "content": response_text})
-        
+
         # Clear the input field
         st.session_state.input_field = ""
 
 # Input field with callback
 st.text_input(
-    "Ask a question:", 
+    "Ask a question:",
     key="input_field",
     placeholder="Type your question here...",
     on_change=handle_input
