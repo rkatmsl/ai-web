@@ -34,7 +34,7 @@ if 'knowledge_base_initialized' not in st.session_state:
             embedder=GeminiEmbedder(),
         ),
     )
-    knowledge_base.load(recreate=True)  # Uncomment this line to recreate the knowledge base
+    # knowledge_base.load(recreate=True)
     # Store in session state so it persists across reruns
     st.session_state['knowledge_base'] = knowledge_base
     st.session_state['knowledge_base_initialized'] = True
