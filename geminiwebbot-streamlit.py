@@ -27,7 +27,7 @@ if 'knowledge_base_initialized' not in st.session_state:
     # Initialize KnowledgeBase
     knowledge_base = WebsiteKnowledgeBase(
         urls=["https://www.adanifoundation.org"],
-        max_links=700,
+        max_links=10,
         vector_db=PgVector(
             table_name="adani_kb",
             db_url=db_url,
